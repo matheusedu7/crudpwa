@@ -1,0 +1,125 @@
+/* Estilos gerais do gerenciador de produtos */
+.product-manager {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Formulário de entrada para adicionar ou atualizar produtos */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Botões com estilos modernos */
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo específico para botões de criar e atualizar */
+button.create {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 10px;
+}
+
+button.update {
+    background-color: #ff9800;
+    color: white;
+}
+
+/* Estilo específico para botões de editar e deletar */
+button.edit {
+    background-color: #2196F3;
+    color: white;
+}
+
+button.delete {
+    background-color: #f44336;
+    color: white;
+    margin-left: 10px;
+}
+
+button.edit:hover, button.delete:hover {
+    opacity: 0.9;
+}
+
+/* Lista de produtos com design mais limpo e profissional */
+.product-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.product-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.product-list li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Ações de produto */
+.product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Layout responsivo */
+@media (max-width: 768px) {
+    .product-manager {
+        padding: 20px;
+    }
+
+    .product-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-list li button {
+        margin-top: 10px;
+    }
+}

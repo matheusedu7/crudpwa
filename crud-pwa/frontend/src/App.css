@@ -1,0 +1,81 @@
+/* Reset básico para garantir consistência entre navegadores */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;  /* Fonte moderna e profissional */
+  background-color: #f4f7f6;          /* Cor de fundo suave e moderna */
+  color: #333;                        /* Cor de texto neutra */
+  display: flex;
+  justify-content: center;            /* Centraliza horizontalmente */
+  align-items: center;                /* Centraliza verticalmente */
+  height: 100vh;                      /* Ocupa a tela inteira */
+  text-align: center;
+  padding-top: 20px;                  /* Adiciona espaçamento no topo */
+}
+
+/* Estilo do contêiner principal */
+.app-container {
+  background-color: #ffffff;          /* Fundo branco para contraste */
+  padding: 40px;                      /* Espaçamento interno para dar um respiro ao conteúdo */
+  border-radius: 12px;                /* Cantos arredondados para um visual moderno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para destaque */
+  max-width: 600px;                   /* Limita a largura para telas grandes */
+  width: 100%;                        /* Garante que ocupe toda a largura em telas menores */
+  padding-top: 60px;                  /* Ajuste de padding */
+}
+
+/* Estilo do título principal */
+h1 {
+  font-size: 48px;                    /* Tamanho grande para destaque */
+  color: #2c3e50;                     /* Tom de azul escuro para sofisticação */
+  margin-bottom: 20px;                /* Espaçamento inferior */
+  font-weight: 700;                   /* Negrito */
+  margin-top: 0px;                    /* Define o espaçamento superior do título */
+  padding-top: 20px;                  /* Adiciona padding no topo do título */
+}
+
+/* Estilo para texto e subtítulos */
+p {
+  font-size: 18px;                    /* Tamanho legível para parágrafos */
+  line-height: 1.6;                   /* Espaçamento entre linhas */
+  color: #555;                        /* Cor de texto suavemente acinzentada */
+  margin-bottom: 20px;                /* Espaçamento inferior */
+}
+
+/* Botão estilizado */
+button {
+  background-color: #3498db;          /* Cor de destaque para o botão */
+  color: white;                       /* Cor do texto */
+  padding: 12px 24px;                 /* Espaçamento interno */
+  border: none;
+  border-radius: 8px;                 /* Bordas arredondadas */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+/* Estilo ao passar o mouse no botão */
+button:hover {
+  background-color: #2980b9;          /* Muda a cor ao passar o mouse */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 36px;                /* Ajusta o tamanho do título em telas pequenas */
+  }
+
+  .app-container {
+      padding: 20px;                  /* Reduz o espaçamento interno em telas pequenas */
+  }
+
+  button {
+      width: 100%;                    /* Botão ocupa toda a largura da tela */
+      padding: 12px 0;                /* Ajusta o espaçamento vertical */
+  }
+}
