@@ -2,26 +2,24 @@ const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const path = require('path'); // Importar path para servir os arquivos da pasta build
+const path = require('path');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Configurar CORS para permitir requisições do frontend
+
 app.use(cors({
-    origin: 'http://localhost:3000' // Permitir que o frontend faça requisições
+    origin: 'http://localhost:3000'
 }));
 
-// Middleware para interpretar JSON e URL-encoded
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Conectar ao MongoDB
+
 mongoose.connect('mongodb://localhost:27017/crud', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Conectado ao MongoDB"))
     .catch(err => console.log("Erro ao conectar ao MongoDB", err));
 
-// Modelo de Usuário (User)
 const UserSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -52,7 +50,6 @@ app.post('/login', async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ message: "Senha incorreta" });
 
-        // Gera um token JWT
         const token = jwt.sign({ id: user._id }, 'secretkey', { expiresIn: '1h' });
         res.json({ token });
     } catch (err) {
@@ -60,29 +57,24 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Middleware de Autenticação JWT
 const authMiddleware = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     
-    // Verifica se o cabeçalho Authorization foi fornecido
     if (!authHeader) {
         return res.status(403).json({ message: 'Token necessário' });
     }
 
-    // Remove o prefixo 'Bearer ' do token
     const token = authHeader.split(' ')[1];
     
     if (!token) {
         return res.status(403).json({ message: 'Token inválido ou ausente' });
     }
 
-    // Verifica o token JWT
     jwt.verify(token, 'secretkey', (err, decoded) => {
         if (err) {
             return res.status(401).json({ message: 'Falha na autenticação, token inválido' });
         }
         
-        // Se o token for válido, armazene o id do usuário no objeto req
         req.userId = decoded.id;
         next();
     });
@@ -100,9 +92,9 @@ app.get('/profile', authMiddleware, async (req, res) => {
 });
 
 // *** Rotas CRUD para Produtos ***
-const Product = require('./models/Product'); // Importe o modelo Product
+const Product = require('./models/Product');
 
-// Rota para criar um produto (Autenticada)
+// Rota para criar um produto
 app.post('/products', authMiddleware, async (req, res) => {
     try {
         const product = new Product(req.body);
@@ -123,7 +115,7 @@ app.get('/products', async (req, res) => {
     }
 });
 
-// Rota para atualizar um produto (Autenticada)
+// Rota para atualizar um produto
 app.put('/products/:id', authMiddleware, async (req, res) => {
     try {
         const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -133,7 +125,7 @@ app.put('/products/:id', authMiddleware, async (req, res) => {
     }
 });
 
-// Rota para deletar um produto (Autenticada)
+// Rota para deletar um produto
 app.delete('/products/:id', authMiddleware, async (req, res) => {
     try {
         await Product.findByIdAndDelete(req.params.id);
@@ -143,13 +135,12 @@ app.delete('/products/:id', authMiddleware, async (req, res) => {
     }
 });
 
-// *** Configuração para servir o front-end ***
+
 app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-// Servir o index.html para qualquer rota que não corresponda às rotas da API
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
 
-// Iniciar o Servidor
+
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

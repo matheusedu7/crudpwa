@@ -1,4 +1,3 @@
-/* Estilos gerais do gerenciador de produtos */
 .product-manager {
     max-width: 1000px;
     margin: 40px auto;
@@ -16,7 +15,6 @@ h2 {
     margin-bottom: 30px;
 }
 
-/* Formulário de entrada para adicionar ou atualizar produtos */
 .form-group {
     margin-bottom: 20px;
 }
@@ -36,7 +34,6 @@ h2 {
     outline: none;
 }
 
-/* Botões com estilos modernos */
 button {
     padding: 12px 20px;
     font-size: 16px;
@@ -51,7 +48,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Estilo específico para botões de criar e atualizar */
 button.create {
     background-color: #4CAF50;
     color: white;
@@ -63,7 +59,6 @@ button.update {
     color: white;
 }
 
-/* Estilo específico para botões de editar e deletar */
 button.edit {
     background-color: #2196F3;
     color: white;
@@ -79,7 +74,6 @@ button.edit:hover, button.delete:hover {
     opacity: 0.9;
 }
 
-/* Lista de produtos com design mais limpo e profissional */
 .product-list {
     list-style-type: none;
     padding: 0;
@@ -102,13 +96,11 @@ button.edit:hover, button.delete:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Ações de produto */
 .product-actions {
     display: flex;
     gap: 10px;
 }
 
-/* Layout responsivo */
 @media (max-width: 768px) {
     .product-manager {
         padding: 20px;

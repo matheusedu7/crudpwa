@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Para navegação entre páginas
-import './ProductManager.css'; // Importando o CSS
+import { useNavigate } from 'react-router-dom';
+import './ProductManager.css';
 
 const ProductManager = () => {
     const [products, setProducts] = useState([]);
@@ -9,15 +9,15 @@ const ProductManager = () => {
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const [editingProduct, setEditingProduct] = useState(null);
-    const navigate = useNavigate(); // Hook para navegação
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         
-        // Verifica se o token existe, caso contrário redireciona para a página de login
+    
         if (!token) {
             alert('Você precisa estar logado para acessar esta página');
-            navigate('/login'); // Redireciona para a página de login
+            navigate('/login');
             return;
         }
         

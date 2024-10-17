@@ -1,28 +1,27 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from './AuthContext'; // Importando o contexto de autenticação
-import './Login.css'; // Importando o CSS
+import { AuthContext } from './AuthContext';
+import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext); // Obtém a função login do contexto
+    const { login } = useContext(AuthContext);
 
     const handleLogin = async () => {
         try {
             const response = await axios.post('http://localhost:8080/login', { email, password });
             const token = response.data.token;
-            localStorage.setItem('token', token); // Armazena o token no localStorage
-            login(); // Atualiza o estado de autenticação no contexto
-            navigate('/products'); // Redireciona para a página de produtos
+            localStorage.setItem('token', token);
+            login();
+            navigate('/products');
         } catch (error) {
             console.error('Erro no login', error.response ? error.response.data : error.message);
         }
     };
 
-    // Função para redirecionar para a página de registro
     const handleRegisterRedirect = () => {
         navigate('/register');
     };

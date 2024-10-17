@@ -1,6 +1,4 @@
-// serviceWorkerRegistration.js
 
-// Esse código registra o service worker no ambiente de produção para cache e uso offline
 
 const isLocalhost = Boolean(
     window.location.hostname === 'localhost' ||

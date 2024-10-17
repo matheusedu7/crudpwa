@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Para navegação
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate(); // Hook para navegar entre páginas
+    const navigate = useNavigate();
 
     const handleRegister = async () => {
-        console.log({ name, email, password }); // Verificar os dados antes de enviar
+        console.log({ name, email, password });
         try {
             const response = await axios.post('http://localhost:8080/register', { name, email, password });
-            alert(response.data.message); // Exibir mensagem de sucesso do backend
-            navigate('/login'); // Redireciona para a página de login após o registro bem-sucedido
+            alert(response.data.message);
+            navigate('/login');
         } catch (error) {
             console.error('Erro no registro', error.response ? error.response.data : error.message);
         }

@@ -13,6 +13,6 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^5.12.2"
   },
-  "author": "Seu Nome",
+  "author": "Matheus",
   "license": "ISC"
 }
